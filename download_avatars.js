@@ -12,7 +12,8 @@ function getRepoContributors(repoOwner, repoName, cb) {
     url:url,
     headers:{
       'User-Agent': 'github avatar Downloader'
-    }
+    },
+    json:true
   }
   request(options,function(err,response,body){
     return cb(err,body);
@@ -21,5 +22,7 @@ function getRepoContributors(repoOwner, repoName, cb) {
 
 getRepoContributors("jquery","jquery", function(err,result){
   console.log("Errors:", err);
-  console.log("Result:", result);
+  for(x in result){
+    console.log(result[x].avatar_url);
+  }
 });
