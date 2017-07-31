@@ -33,12 +33,12 @@ getRepoContributors(process.argv[2],process.argv[3], function(err,result){
 });
 
 function downloadImageByURL(url, filePath) {
-  request(url)
-    .on('error',function(err){
-      throw err;
-    })
-    .on('response',function(response){
-      console.log('fetched image at: ', url);
-    })
-    .pipe(fs.createWriteStream("./" + filePath + ".jpg"));
-  }
+request(url)
+  .on('error',function(err){
+    throw err;
+  })
+  .on('response',function(response){
+    console.log('fetched image at: ', url);
+  })
+  .pipe(fs.createWriteStream("./" + filePath + ".jpg"));
+}
