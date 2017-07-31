@@ -4,9 +4,17 @@ console.log('Welcome to the GitHub Avatar Downloader!');
 
 var fs = require('fs');
 
+var env = require('dotenv');
+
+const result = env.config()
+
+if(result.error){
+  throw result.error;
+}
+
 function getRepoContributors(repoOwner, repoName, cb) {
-  var GITHUB_USER = "KwinstonRoberts";
-  var GITHUB_TOKEN = "1fcd546c798967f1a00ad42e5fd59e6a5b9600bf";
+  var GITHUB_USER = process.env.GITHUB_USER;
+  var GITHUB_TOKEN =  process.env.GITHUB_TOKEN;
   if(!process.argv[2] || !process.argv[3]){
     console.log("You must provide both a repo owner and the name of the repo as arguments.");
   }else{
